@@ -11,16 +11,17 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+    padding: 16px;
 }
 
+/* ========== COMMON ========== */
 .screen {
     width: 100%;
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+    padding: 16px;
 }
 
 .screen-content {
@@ -31,12 +32,12 @@ body {
 }
 
 .game-main-title {
-    font-size: clamp(2rem, 8vw, 3.5rem);
-    letter-spacing: 5px;
+    font-size: clamp(1.8rem, 8vw, 3.5rem);
+    letter-spacing: 3px;
     font-weight: 800;
     margin-bottom: 15px;
     color: rgb(6, 5, 6);
-    text-shadow: 3px 5px 6px rgb(255, 255, 255);
+    text-shadow: 2px 3px 4px rgb(255, 255, 255);
 }
 
 .back-btn {
@@ -70,6 +71,7 @@ body {
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
 }
 
+/* CARD CONTAINER */
 .card-container {
     background: #22104b;
     border-radius: 24px;
@@ -80,11 +82,40 @@ body {
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
 }
 
+/* ========== LANGUAGE CARDS - LAGING 2 COLUMNS ========== */
 .language-cards {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr 1fr;  /* Fixed 2 columns - HINDI nagbabago */
     gap: 20px;
     width: 100%;
+}
+
+/* Kahit sa mobile, 2 columns parin */
+@media (max-width: 500px) {
+    .language-cards {
+        grid-template-columns: 1fr 1fr;  /* 2 columns parin kahit maliit */
+        gap: 12px;
+    }
+}
+
+/* Very small mobile - adjust padding pero 2 columns parin */
+@media (max-width: 380px) {
+    .language-cards {
+        grid-template-columns: 1fr 1fr;  /* 2 columns parin */
+        gap: 10px;
+    }
+    
+    .lang-card {
+        padding: 15px 8px;
+    }
+    
+    .lang-icon i {
+        font-size: 1.5rem;
+    }
+    
+    .lang-name {
+        font-size: 0.9rem;
+    }
 }
 
 .lang-card {
@@ -116,6 +147,7 @@ body {
     color: #333;
 }
 
+/* ========== LEVEL SCREEN ========== */
 .level-screen {
     background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
 }
@@ -140,6 +172,7 @@ body {
     font-weight: bold;
 }
 
+/* ========== LEVEL CARDS - Responsive ========== */
 .level-cards {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -147,6 +180,14 @@ body {
     width: 100%;
     max-width: 500px;
     margin: 0 auto;
+}
+
+/* Mobile: level cards nagiging 1 column */
+@media (max-width: 500px) {
+    .level-cards {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
 }
 
 .level-card {
@@ -192,6 +233,7 @@ body {
     font-weight: bold;
 }
 
+/* ========== GAME SCREEN ========== */
 .game-screen {
     background: rgba(255,255,255,0.95);
     border-radius: 30px;
@@ -211,6 +253,8 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .level-indicator-btn {
@@ -262,6 +306,7 @@ body {
     margin: 10px 0;
 }
 
+/* Stats Row */
 .stats-row {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -314,6 +359,7 @@ body {
     }
 }
 
+/* Hangman + Hearts Row */
 .hangman-hearts-row {
     display: flex;
     justify-content: space-between;
@@ -386,6 +432,7 @@ body {
     animation: shake 0.3s ease;
 }
 
+/* Question Container */
 .question-container {
     background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
     border-radius: 15px;
@@ -406,6 +453,7 @@ body {
     font-style: italic;
 }
 
+/* Word Container */
 .word-container {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     border-radius: 15px;
@@ -422,6 +470,7 @@ body {
     text-transform: uppercase;
 }
 
+/* Keyboard */
 .keyboard {
     display: flex;
     flex-wrap: wrap;
@@ -464,27 +513,152 @@ body {
     color: white;
 }
 
-@media (max-width: 500px) {
-    .game-screen { padding: 15px; }
-    .game-header { margin-bottom: 5px; }
-    .level-indicator-btn { font-size: 0.7rem; padding: 4px 12px; }
-    .points-indicator { padding: 4px 12px; font-size: 0.8rem; }
-    .points-indicator i, .points-indicator span { font-size: 0.8rem; }
-    .stat-value { font-size: 1.2rem; }
-    .stat-label { font-size: 0.6rem; }
-    .hangman-hearts-row { flex-direction: column; gap: 10px; }
-    .health-side { width: 100%; padding: 8px; }
-    .word-display { font-size: 1.2rem; letter-spacing: 5px; }
-    .key { width: 32px; height: 32px; font-size: 0.85rem; }
-    .heart-multiplier { font-size: 1.5rem; }
-    .heart-multiplier i { font-size: 2rem; }
-    .heart-multiplier span { font-size: 1.5rem; }
-    .language-cards { grid-template-columns: 1fr 1fr; gap: 15px; }
-    .lang-card { padding: 20px 15px; }
-    .lang-icon i { font-size: 2.5rem; }
-    .level-cards { grid-template-columns: 1fr; gap: 15px; }
+/* Modal styles */
+#wellDoneModal > div,
+#gameOverModal > div {
+    max-width: min(90%, 350px);
+    padding: 30px;
 }
 
-@media (max-width: 400px) {
-    .language-cards { grid-template-columns: 1fr; }
+/* ========== RESPONSIVE BREAKPOINTS ========== */
+
+/* Mobile */
+@media (max-width: 500px) {
+    /* Language cards - 2 columns parin (hindi nagbabago) */
+    .language-cards {
+        gap: 12px;
+    }
+    
+    /* Level cards - nagiging 1 column */
+    .level-cards {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    /* Game screen adjustments */
+    .game-screen {
+        padding: 15px;
+    }
+    
+    .game-header {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    
+    .hangman-hearts-row {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .health-side {
+        width: 100%;
+    }
+    
+    .word-display {
+        font-size: 1.2rem;
+        letter-spacing: 5px;
+    }
+    
+    .key {
+        width: 32px;
+        height: 32px;
+        font-size: 0.85rem;
+    }
+    
+    .heart-multiplier {
+        font-size: 1.5rem;
+    }
+    
+    .heart-multiplier i {
+        font-size: 2rem;
+    }
+    
+    .heart-multiplier span {
+        font-size: 1.5rem;
+    }
+    
+    .stat-value {
+        font-size: 1.2rem;
+    }
+    
+    .stat-label {
+        font-size: 0.6rem;
+    }
+    
+    .level-indicator-btn {
+        font-size: 0.7rem;
+        padding: 4px 12px;
+    }
+    
+    .points-indicator {
+        padding: 4px 12px;
+        font-size: 0.8rem;
+    }
+    
+    .points-indicator i,
+    .points-indicator span {
+        font-size: 0.8rem;
+    }
+}
+
+/* Very small mobile */
+@media (max-width: 380px) {
+    .language-cards {
+        gap: 8px;
+    }
+    
+    .lang-card {
+        padding: 12px 6px;
+    }
+    
+    .lang-icon i {
+        font-size: 1.3rem;
+        margin-bottom: 6px;
+    }
+    
+    .lang-name {
+        font-size: 0.8rem;
+    }
+    
+    .key {
+        width: 28px;
+        height: 28px;
+        font-size: 0.75rem;
+    }
+    
+    .word-display {
+        font-size: 1rem;
+        letter-spacing: 3px;
+    }
+    
+    .game-title {
+        font-size: 1.5rem;
+        letter-spacing: 3px;
+    }
+}
+
+/* Landscape mode on mobile */
+@media (max-width: 800px) and (orientation: landscape) {
+    .game-screen {
+        max-width: 90%;
+    }
+    
+    .hangman-hearts-row {
+        flex-direction: row;
+    }
+    
+    .hangman-svg {
+        width: 100px;
+        height: 120px;
+    }
+    
+    .keyboard {
+        gap: 5px;
+    }
+    
+    .key {
+        width: 30px;
+        height: 30px;
+        font-size: 0.8rem;
+    }
 }
